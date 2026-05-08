@@ -41,6 +41,36 @@ function toggleReadStatus(book: Book): IReadWrapper {
 }
 
 
+class Person {
+    public name: string;
+    public age: number;
+
+    constructor(name: string, age: number) {
+        this.name = name;
+        this.age = age;
+    }
+}
+
+class Student extends Person {
+    public grade: string;
+
+    constructor(name: string, age: number, grade: string) {
+        super(name, age);
+        this.grade = grade;
+    }
+
+    getDetails(): string {
+        return `Name: ${this.name}, Age: ${this.age}, Grade: ${this.grade}`;
+    }
+}
+
+
+function getIntersection(arr1: number[], arr2: number[]): number[] {
+    const set1 = new Set(arr1);
+    return arr2.filter((item) => set1.has(item));
+}
+
+
 
 
 console.log(
@@ -81,6 +111,18 @@ console.log(
     toggleReadStatus(
         { title: "TypeScript Guide", author: "Jane Doe", publishedYear: 2024 }
     ),
+    "\n"
+);
+
+console.log(
+    `test prob 6: new Student("Alice", 20, "A")\n`,
+    new Student("Alice", 20, "A").getDetails(),
+    "\n"
+);
+
+console.log(
+    `test prob 7: [1, 2, 3, 4, 5], [3, 4, 5, 6, 7]\n`,
+    getIntersection([1, 2, 3, 4, 5], [3, 4, 5, 6, 7]),
     "\n"
 );
 
