@@ -23,6 +23,26 @@ function getProperty<T, K extends keyof T>(obj: T, key: K): T[K] {
 }
 
 
+interface Book {
+    title: string;
+    author: string;
+    publishedYear: number;
+}
+
+interface IReadWrapper extends Book {
+    isRead: boolean;
+}
+
+function toggleReadStatus(book: Book): IReadWrapper {
+    return {
+        ...book,
+        isRead: true,
+    };
+}
+
+
+
+
 console.log(
     "test prob 1: [1, 2, 3, 4, 5, 6]\n",
     filterEvenNumbers([1, 2, 3, 4, 5, 6]),
@@ -52,6 +72,14 @@ console.log(
     getProperty(
         { id: 1, name: "John Doe", age: 21 },
         "name"
+    ),
+    "\n"
+);
+
+console.log(
+    `test prob 5: { title: "TypeScript Guide", author: "Jane Doe", publishedYear: 2024 }\n`,
+    toggleReadStatus(
+        { title: "TypeScript Guide", author: "Jane Doe", publishedYear: 2024 }
     ),
     "\n"
 );
